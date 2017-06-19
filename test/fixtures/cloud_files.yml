@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: cloud_files
+#
+#  id           :integer          not null, primary key
+#  content_type :string(255)
+#  file_size    :integer
+#  asset        :string(255)
+#  name         :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content_type: MyString
+  file_size: 1
+  asset: MyString
+  name: MyString
+
+two:
+  content_type: MyString
+  file_size: 1
+  asset: MyString
+  name: MyString
