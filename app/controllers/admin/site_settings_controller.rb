@@ -16,6 +16,6 @@ class Admin::SiteSettingsController < Admin::BaseController
       Siteconf.send("#{key}=", params[:settings][key])
     end
     flash[:success] = '保存成功'
-    redirect_to admin_site_settings_path
+    redirect_to(request.env['HTTP_REFERER'])
   end
 end
