@@ -12,4 +12,7 @@
 
 class Bookmark < ApplicationRecord
   belongs_to :user
+  belongs_to :bookmarkable, :polymorphic => true
+
+  validates :user_id, :bookmarkable_type, :bookmarkable_id, :presence => true
 end

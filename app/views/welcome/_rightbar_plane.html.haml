@@ -1,0 +1,4 @@
+.cell
+  %span.gray= plane.name
+  .sep5
+  = render plane.nodes.order(Node.default_order_str).limit(20)

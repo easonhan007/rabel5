@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619093803) do
+ActiveRecord::Schema.define(version: 20170620004336) do
+
+  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "personal_website"
+    t.string "location"
+    t.string "signature"
+    t.text "introduction"
+    t.string "weibo_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "link"
@@ -79,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170619093803) do
     t.text "custom_css"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "plane_id"
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -104,6 +117,13 @@ ActiveRecord::Schema.define(version: 20170619093803) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "planes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rewards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "admin_user_id"
     t.bigint "user_id"
@@ -113,6 +133,13 @@ ActiveRecord::Schema.define(version: 20170619093803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rewards_on_user_id"
+  end
+
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "var"
+    t.text "value"
+    t.integer "thing_id"
+    t.string "thing_type"
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -146,10 +173,16 @@ ActiveRecord::Schema.define(version: 20170619093803) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.string "avatar"
+    t.string "role"
+    t.boolean "blocked", default: false
+    t.integer "reward", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "followings", "users"

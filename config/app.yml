@@ -1,0 +1,31 @@
+defaults: &defaults
+  site_name: Rabel5
+  ga_id: ''
+  default_search_engine: google
+  seo_description: Rabel5 - 新一代简洁社区软件
+  welcome_tip: 欢迎访问<strong>Rabel</strong>
+  short_intro: 新一代简洁社区软件
+  footer: <p>&copy; 2017 Rabel5</p>
+  custom_css: ''
+  custom_js: ''
+  custom_head_tags: ''
+  nav_position: ''
+  custom_logo: ''
+  global_banner: ''
+  global_sidebar_block: ''
+  show_community_stats: ''
+  allow_markdown_in_topics: off
+  allow_markdown_in_comments: off
+  allow_markdown_in_pages: on
+  reward_title: 银币
+  sticky_topics_heading: 置顶话题
+  latest_topics_heading: 最新讨论
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

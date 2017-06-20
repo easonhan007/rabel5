@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use mysql as the database for Active Record
@@ -53,5 +52,41 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# https://github.com/plataformatec/devise
 gem 'devise'
+# https://github.com/ctran/annotate_models
 gem 'annotate'
+# https://github.com/CanCanCommunity/cancancan
+gem 'cancancan', '~> 1.10'
+# https://github.com/kaminari/kaminari
+gem 'kaminari'
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 1.0'
+# https://github.com/huobazi/carrierwave-qiniu
+# gem 'carrierwave-qiniu', '~> 1.1.0'
+# https://github.com/mime-types/ruby-mime-types/
+# gem 'mime-types'
+# https://github.com/vmg/redcarpet
+gem 'redcarpet'
+# https://github.com/rubychan/coderay
+gem 'coderay'
+# https://github.com/petergoldstein/dalli
+gem 'dalli'
+# https://github.com/swanandp/acts_as_list
+gem 'acts_as_list'
+# https://github.com/ledermann/rails-settings
+gem 'ledermann-rails-settings'
+# https://github.com/FooBarWidget/default_value_for
+gem 'default_value_for'
+# https://github.com/twbs/bootstrap-sass
+gem 'bootstrap-sass', '~> 3.3.6'
+# https://github.com/slim-template/slim-rails
+gem "slim-rails"
+# https://github.com/plataformatec/simple_form
+gem 'simple_form'
+# https://github.com/laserlemon/figaro
+gem "figaro"
+gem 'haml'
+gem 'rmagick'
+gem 'rails-settings-cached'
+gem 'jquery-rails'

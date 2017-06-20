@@ -1,0 +1,20 @@
+.box
+  .box-header
+    社区运行状态
+  .inner
+    %table.table.table-striped
+      %tr
+        %td
+          %span.gray 注册会员
+        %td
+          %strong= User.count
+      %tr
+        %td
+          %span.gray 话题
+        %td
+          %strong= Topic.count
+      %tr
+        %td
+          %span.gray 回复
+        %td
+          %strong= Comment.count
