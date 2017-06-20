@@ -76,6 +76,8 @@
             = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'btn btn-mini', :remote => true
             = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'btn btn-mini', :remote => true
             = link_to '管理此用户', admin_users_path + "?nickname=#{@user.nickname}", :class => 'btn btn-mini'
+    - content_for :modal do
+      .modal.fade#edit-modal{:role => "dialog", :tabindex => "-1"}
 
 .box
   .box-header
@@ -104,4 +106,3 @@
         %p 与该会员相关的所有信息，也会一并删除。
       .inner
         = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'btn btn-small btn-danger'
-
