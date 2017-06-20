@@ -1,2 +1,3 @@
-$.facebox("#{escape_javascript(render('form', :plane => @plane, :node => @node))}");
+$('#edit-modal').html( "#{escape_javascript(render('form', :plane => @plane, :node => @node))}");
+$('#edit-modal').modal('show');
 $("textarea").elastic()

@@ -1,5 +1,5 @@
 #wrap {
-  background-color: #E2E2E2;
+  background-color: #e9eaed;
   padding-top: 20px;
   border-bottom: 1px solid #CCC;
   background-image: url(<%= asset_path('shadow_light.png') %>);
@@ -163,8 +163,8 @@ img.external {
 }
 
 @media only screen and (min-width: 960px) {
-  img.external { max-width: 620px; }
-  .reply img.external { max-width: 560px; }
+  img.external { max-width: 820px; }
+  .reply img.external { max-width: 760px; }
 }
 
 .fileupload-btn {
@@ -234,4 +234,15 @@ ul.nav li {
 
 .global-create-btn {
   margin-right: 15px;
+}
+
+.highlight-background {
+  animation: highlight 1s;
+}
+
+@keyframes highlight {
+  0%  {background: #FFFFCC}
+  25%  {background: #FFFF99}
+  50%  {background: #FFFF33}
+  100%  {background: white}
 }

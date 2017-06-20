@@ -1,6 +1,15 @@
 = form_for [@node, @topic], :remote => :true do |f|
-  = label_tag '移动到新节点'
-  %br
-  = select_tag "new_node_id", option_groups_from_collection_for_select(Plane.default_order.all, :nodes, :name, :id, :name, f.object.node.id)
-  %br
-  = f.submit '开始移动', :class => 'btn btn-small'
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h3.modal-title 移动到新节点
+      .modal-body
+        .form-group
+          = label_tag '移动到新节点'
+          = select_tag "new_node_id", option_groups_from_collection_for_select(Plane.default_order.all, :nodes, :name, :id, :name, f.object.node.id), class: 'form-control'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 取消
+        -# = f.submit '确定', :class => 'btn btn-primary', :data => {:disable_with => t('tips.submitting')}
+        = f.submit '开始移动', :class => 'btn btn-primary'

@@ -14,4 +14,7 @@
     = render 'shared/alert'
     = yield
 
+- content_for :modal do
+  .modal.fade#edit-modal{:role => "dialog", :tabindex => "-1"}
+
 = render :template => 'layouts/base'

@@ -1,6 +1,10 @@
 - target_id = '#' + @node.html_id
-$.facebox.close()
+$('#edit-modal').modal('hide');
 $("#{target_id}").replaceWith("#{escape_javascript(render @node)}");
 setTimeout(function() {
-$("#{target_id}").effect('highlight')
+$("#{target_id}").addClass('highlight-background');
 }, 500)
+
+setTimeout(function() {
+$("#{target_id}").removeClass('highlight-background');
+}, 1500)

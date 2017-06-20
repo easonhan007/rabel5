@@ -1,2 +1,2 @@
 $("##{@comment.html_id}").find('.reply_content').html('#{escape_javascript(parse_markdown(@comment.content))}');
-$.facebox.close();
+$('#edit-modal').modal('hide');

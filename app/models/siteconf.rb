@@ -44,22 +44,18 @@ class Siteconf < RailsSettings::CachedSettings
 
     def marketing_str=(str)
       self.marketing = str.split(',')
-      true
     end
 
     def nav_position_top?
       self.nav_position == 'top'
-      true
     end
 
     def nav_position_sidebar?
       self.nav_position == 'sidebar'
-      true
     end
 
     def nav_position_bottom?
       self.nav_position == 'bottom'
-      true
     end
 
     def topic_editable_period

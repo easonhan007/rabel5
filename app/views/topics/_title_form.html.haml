@@ -1,7 +1,15 @@
 = form_for [@node, @topic], :url => update_title_node_topic_path(@node, @topic), :remote => true do |f|
-  %a{:name => 'new_topic'}
-  = f.label :title, '标题'
-  .sep5
-  = f.text_area :title, :class => :span4, :rows => 2, :autofocus => true
-  .sep5
-  = f.submit '提交修改', :class => 'btn btn-small', :data => {:disable_with => t('tips.submitting')}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h3.modal-title 修改标题
+      .modal-body
+        %a{:name => 'new_topic'}
+        .form-group
+          = f.label :title, '标题'
+          = f.text_area :title, :id => 'modal-edit-title', :class => 'form-control', :rows => 2, :autofocus => true
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 取消
+        = f.submit '确定', :class => 'btn btn-primary', :data => {:disable_with => t('tips.submitting')}

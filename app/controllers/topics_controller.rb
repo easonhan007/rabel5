@@ -4,9 +4,12 @@ class TopicsController < ApplicationController
   before_action :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
   before_action :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
+
   before_action :only => [:toggle_comments_closed, :toggle_sticky] do |c|
     auth_admin
   end
+
+  skip_before_action :verify_authenticity_token, only: [:preview]
 
   def index
     respond_to do |format|
