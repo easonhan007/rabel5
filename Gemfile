@@ -93,5 +93,8 @@ gem 'jquery-rails'
 
 # https://github.com/mina-deploy/mina
 gem 'mina', require: false
+gem 'mina-unicorn', require: false
 # https://github.com/sandelius/mina-puma
-gem 'mina-puma', require: false
+# gem 'mina-puma', require: false
+
+gem 'unicorn', group: [:production]
