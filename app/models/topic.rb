@@ -37,9 +37,9 @@ class Topic < ApplicationRecord
   validates :node_id, :user_id, :title, :presence => true
 
   before_create do
-    hit = 0
-    involved_at = Time.zone.now
-    content = '' if content.nil?
+    self[:hit] = 0
+    self[:involved_at] = Time.zone.now
+    self[:content] = '' if content.nil?
   end
 
   after_create :send_notifications
