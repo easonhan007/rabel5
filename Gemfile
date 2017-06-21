@@ -88,5 +88,10 @@ gem 'simple_form'
 gem "figaro"
 gem 'haml'
 gem 'rmagick'
-gem 'rails-settings-cached'
+gem 'rails-settings-cached' # will be removed
 gem 'jquery-rails'
+
+# https://github.com/mina-deploy/mina
+gem 'mina', require: false
+# https://github.com/sandelius/mina-puma
+gem 'mina-puma', require: false
