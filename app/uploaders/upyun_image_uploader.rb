@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+=begin
 class UpyunImageUploader < CarrierWave::Uploader::Base
   include PictureExtensionWhiteList
   include UploaderHelper
@@ -63,3 +64,4 @@ class UpyunImageUploader < CarrierWave::Uploader::Base
   # end
 
 end
+=end
