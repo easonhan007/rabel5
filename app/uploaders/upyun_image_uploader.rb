@@ -15,7 +15,7 @@ class UpyunImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
-  storage :upyun
+  # storage :upyun
 
   self.upyun_username = Figaro.env.RABEL_UPYUN_OP_NAME
   self.upyun_password = Figaro.env.RABEL_UPYUN_OP_PASSWORD
