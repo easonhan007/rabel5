@@ -1,4 +1,5 @@
 # encoding: utf-8
+require File.join(Rails.application.root, 'lib', 'rabel', 'captcha.rb')
 class WelcomeController < ApplicationController
   def index
     @topics = Topic.home_topics(Siteconf::HOMEPAGE_TOPICS)
