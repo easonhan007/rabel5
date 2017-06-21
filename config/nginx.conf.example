@@ -1,59 +1,60 @@
 worker_processes  1;
 user app;
-      error_log  /var/log/nginx/error.log warn;
-      pid        /var/run/nginx.pid;
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
 
-      events {
-          worker_connections  1024;
-      }
+events {
+    worker_connections  1024;
+}
 
-      http {
-          include       /etc/nginx/mime.types;
-          default_type  application/octet-stream;
+http {
+    # 解决上传时的权限问题
+    client_body_temp_path /tmp;
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
 
-          log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                            '$status $body_bytes_sent "$http_referer" '
-                            '"$http_user_agent" "$http_x_forwarded_for"';
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
 
-          access_log  /var/log/nginx/access.log  main;
+    access_log  /var/log/nginx/access.log  main;
 
-          sendfile        on;
-          #tcp_nopush     on;
+    sendfile        on;
+    #tcp_nopush     on;
 
-          keepalive_timeout  65;
+    keepalive_timeout  65;
 	  client_max_body_size    100M;
 
-          #gzip  on;
+    #gzip  on;
 
-          #include /etc/nginx/conf.d/*.conf;
-          upstream deploy {
-                  server unix:/home/app/rabel5/shared/tmp/sockets/unicorn.sock fail_timeout=0;
-          }
+    #include /etc/nginx/conf.d/*.conf;
+    upstream deploy {
+            server unix:/home/app/rabel5/shared/tmp/sockets/unicorn.sock fail_timeout=0;
+    }
 
-          server {
-              listen 80;
-              server_name testpub.cn; # change to match your URL
-              root /home/app/rabel5/current/public; # I assume your app is located at this location
-	      try_files $uri/index.html $uri @deploy;
+    server {
+        listen 80;
+        server_name testpub.cn; # change to match your URL
+        root /home/app/rabel5/current/public; # I assume your app is located at this location
+  try_files $uri/index.html $uri @deploy;
 
-              location @deploy {
-                  proxy_pass http://deploy; # match the name of upstream directive which is defined above
-                  proxy_set_header Host $host;
-                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		  proxy_redirect off;
-              }
+        location @deploy {
+            proxy_pass http://deploy; # match the name of upstream directive which is defined above
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_redirect off;
+        }
 
-              location ~* ^/assets/ {
-                  # Per RFC2616 - 1 year maximum expiry
-                  expires 1y;
-                  add_header Cache-Control public;
-                          # Some browsers still send conditional-GET requests if there's a
-                  # Last-Modified header or an ETag header even if they haven't
-                  # reached the expiry date sent in the Expires header.
-                  add_header Last-Modified "";
-                  add_header ETag "";
-                  break;
-              }
-       }
-      }
-
+        location ~* ^/assets/ {
+            # Per RFC2616 - 1 year maximum expiry
+            expires 1y;
+            add_header Cache-Control public;
+                    # Some browsers still send conditional-GET requests if there's a
+            # Last-Modified header or an ETag header even if they haven't
+            # reached the expiry date sent in the Expires header.
+            add_header Last-Modified "";
+            add_header ETag "";
+            break;
+        }
+ }
+}
