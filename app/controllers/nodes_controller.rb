@@ -12,7 +12,7 @@ class NodesController < ApplicationController
     end
 
     @total_topics = @node.topics_count
-    @total_pages = (@total_topics * 1.0 / Siteconf.pagination_topics.to_i).ceil
+    @total_pages = (@total_topics * 1.0 / Siteconf.pagination_topics.to_i).ceil rescue 0
     @next_page_num = (@page_num < @total_pages) ? @page_num + 1 : 0
     @prev_page_num = (@page_num > 1) ? @page_num - 1 : 0
     @topics = @node.topics.page(@page_num).per(Siteconf.pagination_topics.to_i).order('updated_at DESC')

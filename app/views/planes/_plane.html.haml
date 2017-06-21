@@ -1,7 +1,7 @@
 .cell
   %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
     %tr
-      %td{:align => :right, :width => 100}
+      %td{:align => :right, :width => 150}
         = plane.name
       %td{:style => 'line-height: 200%; padding-left: 15px;'}
         = render plane.nodes.order(Node.default_order_str).limit(20)

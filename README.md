@@ -6,3 +6,4 @@ TODO
 * 站点配置(settings)使用缓存
 * 使用turbolinks
 * 增加github和微博qq登录
+* 使用[SimpleMDE](https://simplemde.com/)编辑器
