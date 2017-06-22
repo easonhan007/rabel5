@@ -10,3 +10,4 @@ TODO
 * 使用[SimpleMDE](https://simplemde.com/)编辑器
 * 去掉不需要的bootstrap js及css
 * 修复页面排序功能
+* 增加分享到微信或者微博的按钮
