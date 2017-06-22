@@ -56,14 +56,16 @@ class Admin::PlanesController < Admin::BaseController
   end
 
   def sort
-    if params[:position].present?
-      params[:position].each_with_index do |id, pos|
-        Plane.update(id, :position => pos)
+    if params[:position].present? and request.method.downcase == 'post'
+      params[:position].each do |key, position|
+        id = key.sub('position_', '').to_i
+        Plane.update(id, :position => position)
       end
 
-      respond_to do |f|
-        f.js { head :ok }
-      end
+      # respond_to do |f|
+      #   f.js { head :ok }
+      # end
+      redirect_to request.env['HTTP_REFERER']
     else
       respond_to do |f|
         f.js {
