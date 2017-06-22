@@ -5,15 +5,15 @@ window.rabel.trackEvent = (category, action, label) ->
   catch error
 
 jQuery ($) ->
-  # window.rabel.sortable = (selector, update_path, options) ->
-  #   options ||= {}
-  #   settings =
-  #     stop: (event, ui) ->
-  #       $.post(update_path, $(this).sortable('serialize', {key: 'position[]'}), ->
-  #         $(ui.item).parent().effect('highlight')
-  #       )
-  #   $.extend(settings, options)
-  #   $(selector).sortable(settings)
+  window.rabel.sortable = (selector, update_path, options) ->
+    options ||= {}
+    settings =
+      stop: (event, ui) ->
+        $.post(update_path, $(this).sortable('serialize', {key: 'position[]'}), ->
+          $(ui.item).parent().effect('highlight')
+        )
+    $.extend(settings, options)
+    $(selector).sortable(settings)
 
   $(".highlight").mouseenter ->
     $(this).css('background', '#f0f0f0')
