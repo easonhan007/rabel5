@@ -1,2 +1,4 @@
-$.facebox("#{escape_javascript(render('form'))}");
-$("textarea").elastic()
+-# $.facebox("#{escape_javascript(render('form'))}");
+-# $("textarea").elastic()
+$('#edit-modal').html("#{escape_javascript(render('form'))}");
+$('#edit-modal').modal('show');

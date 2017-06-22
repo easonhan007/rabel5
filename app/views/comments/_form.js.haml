@@ -1,5 +1,13 @@
 = simple_form_for @comment, :remote => true do |f|
-  %legend 修改回复
-  = f.input :content, :input_html => {:autofocus => true, :rows => 3, :class => :span5}, :label => false
-  .form-actions
-    = f.submit '保存', :class => 'btn btn-small btn-primary'
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h3.modal-title 修改回复
+      .modal-body
+        .form-group
+          = f.input :content, :input_html => {:autofocus => true, :rows => 3, :class => 'form-control'}, :label => false
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 保存
+        = f.submit '确定', :class => 'btn btn-primary', :data => {:disable_with => t('tips.submitting')}

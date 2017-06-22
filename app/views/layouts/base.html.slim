@@ -46,5 +46,5 @@ html
         .row
           = content_for?(:content) ? yield(:content) : yield
           = yield :sidebar
-    = content_for(:modal)
+    .modal.fade#edit-modal :role = "dialog", :tabindex = "-1"
     = render 'shared/footer'

@@ -17,5 +17,5 @@
       .inner
         = link_to '删除此话题', node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-sm btn-danger'
 
-  - content_for :modal do
-    .modal.fade#edit-modal{:role => "dialog", :tabindex => "-1"}
+  -# - content_for :modal do
+  -#   .modal.fade#edit-modal{:role => "dialog", :tabindex => "-1"}
