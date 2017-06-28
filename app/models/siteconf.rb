@@ -11,7 +11,8 @@
 #  updated_at :datetime
 #
 
-class Siteconf < RailsSettings::CachedSettings
+# class Siteconf < RailsSettings::CachedSettings
+class Siteconf < RailsSettings::Base
   def self.boolean_attributes(*args)
     args.each do |m|
       self.instance_eval <<-CODE

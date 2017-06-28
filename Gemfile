@@ -75,7 +75,7 @@ gem 'dalli'
 # https://github.com/swanandp/acts_as_list
 gem 'acts_as_list'
 # https://github.com/ledermann/rails-settings
-gem 'ledermann-rails-settings'
+# gem 'ledermann-rails-settings'
 # https://github.com/FooBarWidget/default_value_for
 gem 'default_value_for'
 # https://github.com/twbs/bootstrap-sass
@@ -88,7 +88,7 @@ gem 'simple_form'
 gem "figaro"
 gem 'haml'
 gem 'rmagick'
-gem 'rails-settings-cached' # will be removed
+gem 'rails-settings-cached', '~> 0.6.5' # will be removed
 gem 'jquery-rails'
 
 # https://github.com/mina-deploy/mina
