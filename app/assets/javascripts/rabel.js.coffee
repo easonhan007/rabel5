@@ -4,7 +4,8 @@ window.rabel.trackEvent = (category, action, label) ->
     _gaq.push ['_trackEvent', category, action, label]
   catch error
 
-jQuery ($) ->
+# jQuery ($) ->
+$(document).on 'turbolinks:load',  ->
   window.rabel.sortable = (selector, update_path, options) ->
     options ||= {}
     settings =

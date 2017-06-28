@@ -1,5 +1,7 @@
 //= require rails-ujs
+//= require rails-ujs
 //= require jquery3
+//= require turbolinks
 //= require bootstrap
 //= require jquery_elastic
 //= require jquery_at_caret
