@@ -61,7 +61,11 @@ class Siteconf < RailsSettings::Base
     end
 
     def topic_editable_period
-      5.minutes
+      24.hours
+    end
+
+    def topic_editable_period_str
+      (24 * 60).to_s
     end
 
     def simple_topic_list_style?
