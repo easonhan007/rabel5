@@ -13,6 +13,7 @@
 #  custom_css   :text(65535)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  plane_id     :integer
 #
 
 class Node < ApplicationRecord

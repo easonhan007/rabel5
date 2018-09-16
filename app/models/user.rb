@@ -15,7 +15,13 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  nickname               :string(255)
+#  avatar                 :string(255)
+#  role                   :string(255)
+#  blocked                :boolean          default(FALSE)
+#  reward                 :integer          default(0)
 #
+
 require 'carrierwave/orm/activerecord'
 
 class User < ApplicationRecord
@@ -25,6 +31,9 @@ class User < ApplicationRecord
      :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :captcha, :captcha_key
+  # for user login use nickname or email
+  # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
+  attr_accessor :login
 
   mount_uploader :avatar, AvatarUploader
 
@@ -47,6 +56,12 @@ class User < ApplicationRecord
   has_many :followed_users, :through => :followed_relationships
 
   before_create :create_acount
+
+  def self.find_for_database_authentication warden_conditions
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+    res = where(conditions).where(["lower(nickname) = :value OR lower(email) = :value", {value: login.strip.downcase}]).first
+  end
 
   def latest_created_topics
     self.topics.order('created_at DESC').limit(10)

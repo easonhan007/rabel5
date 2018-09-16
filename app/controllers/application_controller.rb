@@ -39,8 +39,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :init
   before_action :detect_mobile_client
+  # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
 
   def custom_path(model)
     if model.is_a? Topic
@@ -109,5 +111,10 @@ class ApplicationController < ActionController::Base
       # See: https://github.com/plataformatec/devise/blob/master/lib/devise/controllers/helpers.rb#L172
       session[:user_return_to] = request.fullpath
     end
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password, :password_confirmation])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :email, :password, :password_confirmation, :current_password])
+     end
 
 end

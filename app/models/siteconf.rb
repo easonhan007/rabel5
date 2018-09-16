@@ -3,12 +3,10 @@
 # Table name: settings
 #
 #  id         :integer          not null, primary key
-#  var        :string(255)      not null
+#  var        :string(255)
 #  value      :text(65535)
 #  thing_id   :integer
-#  thing_type :string(30)
-#  created_at :datetime
-#  updated_at :datetime
+#  thing_type :string(255)
 #
 
 # class Siteconf < RailsSettings::CachedSettings
